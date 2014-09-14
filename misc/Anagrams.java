@@ -1,6 +1,3 @@
-/**
- * Created by jbon on 4/27/14.
- */
 public class Anagrams {
     public static void main(String[] args) {
         String s1 = "momo";
