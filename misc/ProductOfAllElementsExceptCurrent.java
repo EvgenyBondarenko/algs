@@ -8,6 +8,7 @@ public class ProductOfAllElementsExceptCurrent {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(replaceWithProductON(new int[]{1, 2, 3, 4, 5})));
+        System.out.println(Arrays.toString(replaceWithProductONLogN(new int[]{1, 2, 3, 4, 5})));
     }
 
     private static int[] replaceWithProductON(int[] a) {
@@ -25,5 +26,28 @@ public class ProductOfAllElementsExceptCurrent {
             a[i] = temp1[i] * temp2[i];
         }
         return a;
+    }
+
+    private static int[] replaceWithProductONLogN(int[] a) {
+        solve(a, 0, a.length - 1, 1);
+        return a;
+    }
+
+    private static void solve(int[] a, int p, int q, int otherHalfProduct) {
+        if (p == q) {
+            a[p] = otherHalfProduct;
+            return;
+        }
+        int k = (p + q) / 2;
+        int leftProduct = 1;
+        for (int i = p; i <= k; i++) {
+            leftProduct *= a[i];
+        }
+        int rightProduct = 1;
+        for (int i = k + 1; i <= q; i++) {
+            rightProduct *= a[i];
+        }
+        solve(a, p, k, rightProduct * otherHalfProduct);
+        solve(a, k + 1, q, leftProduct * otherHalfProduct);
     }
 }
