@@ -1,13 +1,9 @@
-/**
- * Created by jbon on 4/24/14.
- */
 public class BinaryTreeDepth {
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         root.right = new TreeNode(2);
         System.out.println(new BinaryTreeDepth().new Solution().maxDepth(root));
-
     }
 
     public static class TreeNode {
