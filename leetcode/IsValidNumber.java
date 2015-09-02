@@ -29,21 +29,21 @@ public class IsValidNumber {
             return sm.complete();
         }
 
-        private static class IsValidNumberStateMachine {
+        private static class IsValidNumberStateMachine{
             private final int[][] transition = {
-                    //  NUMBER  E   DOT COMMA   SIGN    OTHER   END
-                    {1, 11, 3, 11, 2, 11, 11}, // NOTHING
-                    {1, 7, 3, 4, 11, 11, 12}, // NUMBER
-                    {1, 11, 3, 11, 11, 11, 11}, // SIGN
-                    {10, 11, 11, 11, 11, 11, 11}, // DOT
-                    {5, 11, 11, 11, 11, 11, 11}, // COMMA
-                    {6, 11, 11, 11, 11, 11, 11}, // COMMA_1
-                    {1, 11, 11, 11, 11, 11, 11}, // COMMA_2
-                    {8, 11, 11, 11, 11, 11, 11}, // E
-                    {8, 11, 9, 11, 11, 11, 12}, // E_NUMBER
-                    {1, 7, 11, 4, 11, 11, 12}, // E_NUMBER_DOT
-                    {8, 11, 11, 11, 11, 11, 12}, // DOTTED_NUMBER
-                    {11, 11, 11, 11, 11, 11, 11}  // INVALID
+                //  NUMBER  E   DOT COMMA   SIGN    OTHER   END
+                    {1,     11, 3,  11,     2,      11,     11}, // NOTHING
+                    {1,     7,  3,  4,      11,     11,     12}, // NUMBER
+                    {1,     11, 3,  11,     11,     11,     11}, // SIGN
+                    {10,    11, 11, 11,     11,     11,     11}, // DOT
+                    {5,     11, 11, 11,     11,     11,     11}, // COMMA
+                    {6,     11, 11, 11,     11,     11,     11}, // COMMA_1
+                    {1,     11, 11, 11,     11,     11,     11}, // COMMA_2
+                    {8,     11, 11, 11,     11,     11,     11}, // E
+                    {8,     11, 9,  11,     11,     11,     12}, // E_NUMBER
+                    {1,     7,  11, 4,      11,     11,     12}, // E_NUMBER_DOT
+                    {8,     11, 11, 11,     11,     11,     12}, // DOTTED_NUMBER
+                    {11,    11, 11, 11,     11,     11,     11}  // INVALID
             };
             private State state = State.NOTHING;
 
@@ -63,20 +63,15 @@ public class IsValidNumber {
             }
 
             private Event charToEvent(char c) {
-                switch (c) {
-                    case 'e':
-                        return Event.E;
-                    case '.':
-                        return Event.DOT;
-                    case ',':
-                        return Event.COMMA;
-                    case '+':
-                        return Event.SIGN;
-                    case '-':
-                        return Event.SIGN;
-                    default:
-                        if (c >= 48 && c <= 57) return Event.NUMBER;
-                        else return Event.OTHER;
+                switch(c) {
+                    case 'e' : return Event.E;
+                    case '.' : return Event.DOT;
+                    case ',' : return Event.COMMA;
+                    case '+' : return Event.SIGN;
+                    case '-' : return Event.SIGN;
+                    default :
+                        if (c >=48 && c <= 57) return Event.NUMBER;
+                        else                   return Event.OTHER;
                 }
             }
 
