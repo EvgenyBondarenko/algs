@@ -40,17 +40,17 @@ public class IsValidNumber {
             private final int[][] transition = {
                 //  NUMBER  E   DOT COMMA  SIGN   OTHER  END
                     {1,     9,  3,  9,     2,     9,     9}, // NOTHING
-                    {1,     7,  10, 4,     9,     9,     12}, // NUMBER
+                    {1,     7,  10, 4,     9,     9,     12},// NUMBER
                     {1,     9,  3,  9,     9,     9,     9}, // SIGN
                     {10,    9,  9,  9,     9,     9,     9}, // DOT
                     {5,     9,  9,  9,     9,     9,     9}, // COMMA
                     {6,     9,  9,  9,     9,     9,     9}, // COMMA_1
                     {1,     9,  9,  9,     9,     9,     9}, // COMMA_2
                     {8,     9,  9,  9,     11,    9,     9}, // E
-                    {8,     9,  9,  9,     9,     9,     12}, // E_NUMBER
+                    {8,     9,  9,  9,     9,     9,     12},// E_NUMBER
                     {9,     9,  9,  9,     9,     9,     9}, // INVALID
-                    {10,    7,  9,  9,     9,     9,     12}, // DOTTED_NUMBER
-                    {8,     9,  9,  9,     9,     9,     9} // E_SIGNED
+                    {10,    7,  9,  9,     9,     9,     12},// DOTTED_NUMBER
+                    {8,     9,  9,  9,     9,     9,     9}  // E_SIGNED
             };
             private State state = State.NOTHING;
 
