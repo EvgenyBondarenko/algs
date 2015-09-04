@@ -13,7 +13,7 @@
 //        X X X X
 //        X X X X
 //        X O X X
-public class SurroundedRegions {
+public class SurroundedRegionsUnionFind {
 
     public static void main(String[] args) {
         int n = 4;
@@ -25,7 +25,7 @@ public class SurroundedRegions {
         board[3][1] = 'O';
         print(board);
         System.out.println();
-        new SurroundedRegions().new Solution().solve(board);
+        new SurroundedRegionsUnionFind().new Solution().solve(board);
         print(board);
 
     }
