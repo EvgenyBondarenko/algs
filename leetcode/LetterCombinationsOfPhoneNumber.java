@@ -3,7 +3,7 @@ import java.util.*;
 public class LetterCombinationsOfPhoneNumber {
 
     public static void main(String[] args) {
-        System.out.println(new LetterCombinationsOfPhoneNumber().new Solution().letterCombinations("234"));
+        System.out.println(new LetterCombinationsOfPhoneNumber().new Solution1().letterCombinations("234"));
     }
 
     public class Solution {
@@ -30,6 +30,45 @@ public class LetterCombinationsOfPhoneNumber {
                 }
             }
             return res;
+        }
+    }
+
+    class Solution1 {
+
+        private char[][] mapping = populateMapping();
+
+        private char[][] populateMapping() {
+            return new char[][] {
+                    {},
+                    {},
+                    {'a', 'b', 'c'},
+                    {'d', 'e', 'f'},
+                    {'g', 'h', 'i'},
+                    {'j', 'k', 'l'},
+                    {'m', 'n', 'o'},
+                    {'p', 'q', 'r', 's'},
+                    {'t', 'u', 'v'},
+                    {'w', 'x', 'y', 'z'}};
+        }
+
+        public List<String> letterCombinations(String digits) {
+            if (digits == null || digits.isEmpty()) return Collections.emptyList();
+            List<String> result = Collections.singletonList("");
+            for (char digit : digits.toCharArray()) {
+                result = addChar(result, digit);
+            }
+            return result;
+        }
+
+        private List<String> addChar(List<String> soFar, char digit) {
+            char[] chars = mapping[digit - '0'];
+            List<String> withCurrChar = new ArrayList<>(soFar.size() * chars.length);
+            for (String s : soFar) {
+                for (char c : chars) {
+                    withCurrChar.add(s + c);
+                }
+            }
+            return withCurrChar;
         }
     }
 }
